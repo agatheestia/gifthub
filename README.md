@@ -1,203 +1,186 @@
-# Example of a login page
+# Introduction
 
-This example demonstrates how to create a login page with PHP and MySQL.
-The project includes examples of an MVC architecture (Model-View-Controller).
-By following the MVC architecture, the project is divided into three main folders:
-* `controller`: contains the controllers of the project (flow of the application)
-* `model`: contains the models of the project (data of the application)
-* `view`: contains the views of the project (display of the application)
+## Étapes d'installation
 
-## Installation
+### 1. Cloner le projet depuis GitHub
 
-### Virtual Host
+1. Ouvrez **Visual Studio Code (VSC)**.
+2. Ouvrez le terminal intégré dans VSC (via `Ctrl + \` ou `Terminal > Nouveau terminal`).
+3. Naviguez jusqu'au dossier de votre serveur WAMP :
+   ```bash
+   cd C:/wamp64/www
+   ```
+4. Clonez le projet dans le dossier `gifthub` avec la commande suivante :
+   ```bash
+   git clone https://github.com/valentin-texier/gifthub.git
+   ```
 
-* Open WAMP server
-* Visit `localhost` in your browser (or right-click on the WAMP icon and click on `localhost`)
-* Click on `Add a Virtual Host`
-* Set the `Project Root` to the project folder
-* Set the `Virtual Host Name` to `tai`
-* Click on `Start the creation of the Virtual Host`
-* Right-click on the WAMP icon, select `Tools` and click on `Restart DNS`
+---
 
-<figure style="text-align:center">
-    <img src="figs/dns.png?raw=true" width="600">
-    <figcaption>Figure 1: 'Restart DNS' location</figcaption>
-</figure>
+### 2. Configuration du serveur WAMP
 
+#### 2.1. Créer un Virtual Host
 
-### Project
-
-* Download the project
-* Extract the project in the `www` folder of WAMP (or the folder you set as `Project Root` in the Virtual Host creation)
-
-### Database:
-
-* Open PhpMyAdmin
-* Create a database named `tai`
-* Import the file `user.sql` from the project/sql folder
+1. Ouvrez **WAMP** et assurez-vous que tous les services sont démarrés.
+2. Cliquez sur l'icône **WAMP** dans la barre des tâches, puis sélectionnez vos virtual host et gestion.
+3. Ajoutez la configuration suivante pour le Virtual Host :
+   ```apache
+    nom gifthub
+    chemin C:/wamp64/www/gifthub"
+   ```
 
 
-You can now visit the project at `tai` (or the name you set as `Virtual Host Name` in the Virtual Host creation)
-Try to log in with the following credentials:
+#### 2.2. Redémarrer WAMP
 
-|First Name|Last name|Login|Password|
-|:----------:|:---------:|:-----:|:--------:|
-|Homer|Simpson|donut|123|
-|Marge|Simpson|marge|revelation|
-|Bart|Simpson|el barto|EatMyShorts|
-|Lisa|Simpson|lisa_simpson|Th*s_is_a_diffiCULT_pw8|
+1. Retournez à l'icône **WAMP** dans la barre des tâches et clique droit.
+2. Cliquez sur tool et redemarrer DNS.
 
+---
 
-## To Note
+### 3. Configuration de la base de données
 
-1. For the **model**, the project provides an example of class and subclass to interact with the database. This will prevent you from re-writing the same code over and over again. You can find the classes in the `model` folder.
-1. For the **view**, the project provides an example of an include file to prevent you from re-writing the same code over and over again. You can find the include file in the `view` folder.
-1. The code is **commented** to help you understand how it works. 
+#### 3.1. Créer la base de données et importer les données
 
-> Your project should follow the same architecture, as well as the same coding style (indentation, comments, etc.).
+1. Ouvrez votre navigateur et allez sur [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
+2. Connectez-vous avec l'utilisateur et le mot de passe par défaut de WAMP : utilisateur `root` et mot de passe vide (ou comme configuré).
+3. Dans PhpMyAdmin, cliquez sur **"Nouvelle base de données"**.
+4. Nommez la base de données (par exemple `gifthub`).
+5. Une fois la base de données créée, cliquez sur **"Importer"**.
+6. Cliquez sur **"Choisir un fichier"** et sélectionnez le fichier `db_gifthub.sql` que vous trouverez dans le dossier du projet cloné.
+7. Cliquez sur **"Exécuter"** pour importer la base de données.
 
+---
 
-# MVC Architecture
+### 4. Accéder à l'application
 
-## Components
+Une fois que vous avez configuré votre Virtual Host et la base de données, ouvrez votre navigateur et tapez l'URL suivante :
 
-### Model
-The model is the data of the application. It is the part of the application that is responsible for managing the data. It receives user input from the controller.
-
-### View
-The view is the display of the application. It is the part of the application that is responsible for displaying the data to the user. It receives data from the controller.
-
-### Controller
-The controller is the flow of the application. It is the part of the application that is responsible for managing the flow of the application. It receives user input from the view and interacts with the model to retrieve the data. It then sends the data to the view to be displayed to the user.
-
-## Flow
-
-
-<figure style="text-align:center">
-    <img src="figs/MVC.png?raw=true" width="600">
-    <figcaption>Figure 2: MVC Architecture</figcaption>
-</figure>
-
-
-1. The user interacts with the view (e.g. clicks on a button)
-1. The view sends the user input to the controller
-1. The controller interacts with the model to retrieve the data
-1. The model sends the data back to the controller
-1. The controller processes the data (i.e., everything is ok? Should we provide an error message? etc.)
-1. The controller sends the data to the view
-1. The view displays the data to the user
-
-
-## Rules
-
-There are several ways to implement the MVC architecture. However, based on our simple example, here are some rules that should be followed:
-
-* **The view and the model should never interact directly.**
-* **The controller should never interact directly with the database (or the files, etc.).**
-* **The model should never interact directly with the view.**
-* **The view should include as little logic (PHP) as possible (loops and echoes).**
-
-
-## Example
-
-Here is a very basic example (not related to the project) of how the MVC architecture could be implemented:
-Let's consider a simple application that displays a list of users, with the following information: first name, last name, and email address.
-
-
-### Controller (the_controller.php)
-This is the endpoint of the application (e.g., https://devweb.estia.fr/project/the_controller.php). It is the only file that is accessible by the user. It is the file that will interact with the model and the view.
-
-```php
-<?php
-    // Include the model (the data) from the model folder
-    include_once('scripts/php/models/the_model.php');
-    // Include the view (the display) from the view folder
-    include_once('scripts/php/views/the_view.php');
-    
-    $model = new TheModel();
-    $view = new TheView();
-
-    // Get the list of users
-    // after that line, the variable $users will contain the list of users
-    $users = $model->get_users();
-
-    // and the view takes care of displaying the data
-    $view->display($users);
-    
-?>
+```plaintext
+http://gifthub/
 ```
 
-### View (the_view.php)
-This is the display of the application. It is the file that will display the data to the user. It should include as little logic (PHP) as possible.
+Si tout est correctement configuré, vous devriez voir l'application fonctionner localement.
 
-```php
-<?php
-class TheView {
+---
 
-    // Function that displays the list of users
-    public function display($users) {
-        // all of this could have been separated in another include file
-        // but for the sake of the example, it is all in the same file, and in the same function!
-?>
-    <html>
-    <head>
-        <title>My Application</title>
-    </head>
-    <body>
-        <h1>My Application</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    // $users is the list of users and is already defined in the controller!!
-                    // The view can now just display the data
-                    // Loop through the list of users
-                    foreach($users as $user) {
-                        echo '<tr>';
-                        echo '<td>'.$user['first_name'].'</td>';
-                        echo '<td>'.$user['last_name'].'</td>';
-                        echo '<td>'.$user['email_address'].'</td>';
-                        echo '</tr>';
-                    }
-                ?>
-            </tbody>
-        </table>
-    </body>
-    </html>
-<?php
-    // do not forget to close the function with }
-    }
-}
 
+# Guide de workflow – Projet Gifthub
+
+
+### Étape 1 – Se placer sur la branche `main` et créer une nouvelle branche
+
+1. Ouvre VS Code
+2. Lance WAMP et vérifie que ton virtual host `gifthub` fonctionne
+3. Ouvre un terminal dans le dossier `C:/wamp64/www/gifthub`
+
+Commande à exécuter :
+```bash
+git checkout main
+git pull origin main
+git checkout -b nom-fonctionnalité
 ```
 
+> Remplace `nom-fonctionnalité` par ce que tu vas développer. Exemple : `page-inscription`
 
-## Model (the_model.php)
-This is the data of the application. It is the file that will interact with the database (or the files, etc.). It should never interact directly with the view.
+---
 
-```php
-<?php
-    
-    class TheModel {
-        // Function that returns the list of users
-        function get_users() {
-            // Connect to the database
-            $db = ...;
-            
-            $query = $db->prepare('SELECT * FROM users');
-            $query->execute();
-            $users = $query->fetchAll();
+### Étape 2 – Génère ton code avec ChatGPT
 
-            // Return the results
-            return $users;
-        }
-    }
-?>
+Voici le **prompt à copier/coller** dans ChatGPT pour générer le code de la fonctionnalité :
+
+```txt
+
+
+À partir de l’image PNG fournie (maquette Figma), génère l’intégralité du code d’un site web dynamique en suivant l’architecture MVC (Model-View-Controller). L’application permet aux utilisateurs de créer, gérer et partager des wishlists (listes de souhaits) : création de compte, ajout de souhaits, indication d’achat, likes, et consultation des souhaits populaires en public. 
+
+Le code doit utiliser :  
+- **HTML** pour la structure  
+- **CSS + Bootstrap** pour le style et la responsivité  
+- **JavaScript** pour les interactions côté client  
+- **PHP (avec PDO)** pour la logique serveur et la communication avec une base de données **MySQL**
+
+Chaque composant (modèle, vue, contrôleur) doit être séparé dans des dossiers dédiés. L’interface doit correspondre fidèlement à la maquette fournie.
+
+La base de données comprend cinq tables :  
+- `users` (id, last_name, first_name, username, email, password, created_at)  
+- `types` (id, name)  
+- `wishlists` (id, name, image, description, id_type, id_user, created_at)  
+- `wishes` (id, name, image, description, link, price, id_wishlist, is_purchased, created_at)  
+- `likes` (id, id_user, id_wish, created_at)
+
+Génère des fichiers HTML, CSS, JS et PHP bien structurés, commentés, évolutifs et directement exploitables.
 ```
 
+---
+
+### Étape 3 – Implémente et structure le code
+
+1. Place ton code généré dans :
+   - `/controllers/` → logique PHP
+   - `/models/` → communication BDD
+   - `/views/` → fichiers HTML/PHP à afficher
+   - `/public/` → JS, CSS, images
+2. Vérifie que la page fonctionne localement via ton virtual host
+
+---
+
+### Étape 4 – Ajouter, valider et documenter ton travail
+
+Utilise un des modèles de commit suivants en fonction de ce que tu as fait :
+
+#### Pour ajouter une fonctionnalité :
+```bash
+git add .
+git commit -m "feat: ajouter "
+```
+
+#### Pour corriger un bug :
+```bash
+git add .
+git commit -m "fix: corriger "
+```
+
+#### Pour améliorer du code sans changer son fonctionnement :
+```bash
+git add .
+git commit -m "refactor: améliorer code "
+```
+
+#### Pour mettre à jour le style :
+```bash
+git add .
+git commit -m "style: améliorer le style de "
+```
+
+> Remplace simplement `le vide` par ce que tu as fait, exemple : `formulaire de connexion`
+
+---
+
+### Étape 5 – Pousser ton travail
+
+Commande à exécuter :
+```bash
+git push origin feat/nom-fonctionnalité
+```
+
+---
+
+### Étape 6 – Fusionner ta branche dans `main`
+
+Quand tout est prêt et fonctionne sur ton poste :
+
+1. Reviens sur `main` :
+```bash
+git checkout main
+git pull origin main
+```
+
+2. Merge ta branche :
+```bash
+git merge feat/nom-fonctionnalité
+```
+
+3. Pousse la branche `main` à jour :
+```bash
+git push origin main
+```
