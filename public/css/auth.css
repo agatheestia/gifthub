@@ -1,0 +1,111 @@
+/* public/css/auth.css */
+
+/* Reset & typographie */
+body {
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #111111;
+}
+
+/* Barre logo */
+.logo-bar {
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+}
+.logo-bar img {
+  vertical-align: middle;
+}
+.logo-bar span {
+  vertical-align: middle;
+}
+
+/* Conteneurs */
+.register-container,
+.login-container {
+  margin-top: 30px;
+  padding: 20px 0;
+}
+
+/* Inputs “pilule” rouges */
+.form-control-custom {
+  background-color: #ff6b6b;
+  border: 1px solid #f94040;
+  border-radius: 15px;
+  color: #fff;
+  font-weight: normal;
+  padding: 12px 16px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: border-color .2s, box-shadow .2s;
+}
+.form-control-custom::placeholder {
+  color: rgba(255,255,255,0.68);
+}
+.form-control-custom:focus {
+  border-color: #ff4d4d;
+  box-shadow: 0 0 0 0.2rem rgba(255,107,107,0.25);
+  outline: none;
+}
+
+/* Bouton custom */
+.btn-custom {
+  display: inline-block;
+  background-color: #ff4d4d;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color .3s ease, 
+              transform .2s ease,
+              box-shadow .2s ease;
+  text-align: center;
+  width: 100%;
+}
+
+/* Hover dynamique */
+.btn-custom:hover {
+  background-color: #e04343;       /* rouge un peu plus sombre */
+  color: #fff;                      /* on garde le blanc */
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+}
+
+/* Focus ring rouge doux */
+.btn-custom:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(255,107,107,0.4);
+}
+
+/* Lien secondaires */
+.create-link,
+.forgot-link {
+  font-size: 0.9rem;
+  color: #062094;
+  text-decoration: none;
+}
+.create-link:hover,
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Message d’erreur */
+.error {
+  background-color: #FFEDED;
+  color: #E04343;
+  border: 1px solid #FF9A9A;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Responsive petits écrans */
+@media (max-width: 576px) {
+  .form-control-custom,
+  .btn-custom {
+    font-size: 1rem;
+  }
+}
