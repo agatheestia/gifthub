@@ -1,6 +1,6 @@
 /* public/css/auth.css */
 
-/* Reset & typographie */
+/* ===== RESET & TYPOGRAPHIE ===== */
 body {
   margin: 0;
   padding: 0;
@@ -9,26 +9,14 @@ body {
   color: #111111;
 }
 
-/* Barre logo */
-.logo-bar {
-  border-bottom: 1px solid #ddd;
-  background-color: #fff;
-}
-.logo-bar img {
-  vertical-align: middle;
-}
-.logo-bar span {
-  vertical-align: middle;
-}
-
-/* Conteneurs */
+/* ===== CONTENEURS FORMULAIRES ===== */
 .register-container,
 .login-container {
   margin-top: 30px;
   padding: 20px 0;
 }
 
-/* Inputs “pilule” rouges */
+/* ===== INPUTS “PILULE” ROUGES ===== */
 .form-control-custom {
   background-color: #ff6b6b;
   border: 1px solid #f94040;
@@ -48,38 +36,37 @@ body {
   outline: none;
 }
 
-/* Bouton custom */
+/* ===== BOUTONS PRINCIPAUX ===== */
 .btn-custom {
-  display: inline-block;
-  background-color: #ff4d4d;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  padding: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background-color .3s ease, 
-              transform .2s ease,
-              box-shadow .2s ease;
-  text-align: center;
+  display: block;
   width: 100%;
+  background-color: #ff4d4d;       
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border: 2px solid transparent; 
+  border-radius: 8px;             
+  padding: 10px 0;               
+  transition: background-color .2s ease, transform .1s ease, box-shadow .2s ease;
 }
 
-/* Hover dynamique */
+/* Hover subtil : légère élévation et teinte plus vive */
 .btn-custom:hover {
-  background-color: #e04343;       /* rouge un peu plus sombre */
-  color: #fff;                      /* on garde le blanc */
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+  background-color: #ff3b3b;    
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  color:white;
 }
 
-/* Focus ring rouge doux */
+/* Focus accessible : encadrement discret */
 .btn-custom:focus {
   outline: none;
-  box-shadow: 0 0 0 0.25rem rgba(255,107,107,0.4);
+  box-shadow: 0 0 0 3px rgba(255,75,75,0.4);
+  background-color: #ff3b3b;
 }
 
-/* Lien secondaires */
+
+/* ===== LIENS SECONDAIRES ===== */
 .create-link,
 .forgot-link {
   font-size: 0.9rem;
@@ -91,7 +78,7 @@ body {
   text-decoration: underline;
 }
 
-/* Message d’erreur */
+/* ===== MESSAGE D’ERREUR ===== */
 .error {
   background-color: #FFEDED;
   color: #E04343;
@@ -102,10 +89,11 @@ body {
   text-align: center;
 }
 
-/* Responsive petits écrans */
+/* ===== RESPONSIVE PETITS ÉCRANS ===== */
 @media (max-width: 576px) {
   .form-control-custom,
   .btn-custom {
     font-size: 1rem;
   }
 }
+

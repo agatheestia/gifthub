@@ -13,15 +13,10 @@
 </head>
 <body>
 
-  <div class="logo-bar text-center py-3 mb-4">
-  <img src="/giftHub/public/images/logo.svg" alt="Logo" width="32">
-    <span class="ms-2 fw-bold fs-4">GiftHub</span>
-  </div>
-
   <div class="container login-container">
     <div class="row justify-content-center">
-    <div class="col-12 col-sm-10 col-md-8 col-lg-5 text-center">
-      
+      <div class="col-12 col-sm-10 col-md-8 col-lg-5 text-center">
+        
         <h2 class="fw-bold text-center mb-4">Connexion</h2>
 
         <?php if (!empty($error)): ?>
@@ -46,9 +41,9 @@
               placeholder="Mot de passe"
               required>
           </div>
-          <div class="mb-3 text-start">
+          <!-- <div class="mb-3 text-start">
             <a href="#" class="forgot-link">Mot de passe oublié ?</a>
-          </div>
+          </div> -->
 
           <button type="submit" class="btn btn-custom w-100 mb-3">Se connecter</button>
 

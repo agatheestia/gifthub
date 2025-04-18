@@ -13,11 +13,6 @@
 </head>
 <body>
 
-  <div class="logo-bar text-center py-3 mb-4">
-    <img src="/giftHub/public/images/logo.svg" alt="Logo" width="32">
-    <span class="ms-2 fw-bold fs-4">GiftHub</span>
-  </div>
-
   <div class="container register-container">
     <div class="row justify-content-center">
       <div class="col-12 col-sm-10 col-md-8 col-lg-5 text-center">
